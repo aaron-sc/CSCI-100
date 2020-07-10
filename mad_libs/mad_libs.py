@@ -119,7 +119,7 @@ words_in_story = []
 revised_story = story
 
 # Dict that holds the words that need to be replaced in the story. Each value in the key/value pair is the named function. It does not call the function. Adding ([params]) would call the function
-words_to_replace = {"[adj]" : adj, "article_of_clothing" : article_of_clothing, "food_ending_in_s" : food_ending_in_s, "your_name" : your_name, "cold_food" : cold_food, "[b_name]" : b_name, "[name]" : name, "[season]" : season, "[u_color]" : u_color, "[size]" : size, "[g_name]" : g_name, "[month]" : month , "[type_of_bird]" : type_of_bird , "[room_in_house]" : room_in_house, "[past_tense_verb]" : past_tense_verb, "[verb]" : verb, "[body_part]" : body_part,"[p_noun]" : p_noun}
+words_to_replace = {"[adj]" : adj, "[article_of_clothing]" : article_of_clothing, "[food_ending_in_s]" : food_ending_in_s, "[your_name]" : your_name, "[cold_food]" : cold_food, "[b_name]" : b_name, "[name]" : name, "[season]" : season, "[u_color]" : u_color, "[size]" : size, "[g_name]" : g_name, "[month]" : month , "[type_of_bird]" : type_of_bird , "[room_in_house]" : room_in_house, "[past_tense_verb]" : past_tense_verb, "[verb]" : verb, "[body_part]" : body_part,"[p_noun]" : p_noun}
 
 # Creates an array for the for loop to iterate over
 replaceable_words = words_to_replace.keys()
@@ -135,7 +135,7 @@ for word in replaceable_words:
 			revised_story = revised_story.replace(word, color.GREEN + words_to_replace[word]() + color.END,1) #words_to_replace[word]() calls the function
 
 # Print the notice
-print(color.YELLOW + "NOTICE: All of your inputs are highlighted in " + color.END + color.GREEN + "green" + color.END + color.YELLOW + "!" + color.END)
+print(divider() + color.YELLOW + "NOTICE: All of your inputs are highlighted in " + color.END + color.GREEN + "green" + color.END + color.YELLOW + "!" + color.END)
 
 # Print the story
 print(color.BLUE + divider() + color.END + "\n" + revised_story)
