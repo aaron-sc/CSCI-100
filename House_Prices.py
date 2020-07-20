@@ -8,7 +8,7 @@ while i < 5:
 print()
 
 for house in house_prices.keys():
-    print("The price of house of house " + str(house) + " is: $" + str(house_prices[house]))
+    print("The price of house for house " + str(house) + " is: $" + str(house_prices[house]))
 
 print()
 
