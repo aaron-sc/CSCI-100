@@ -37,6 +37,6 @@ total = 0.0
 
 for item in user_cart.keys():
     total += user_cart[item] * inventory[item]
-    print(str(user_cart[item]) + " " + item + "(s) @ " + str(inventory[item]) + " = ${:0.2f}".format(user_cart[item] * inventory[item]))
+    print(str(user_cart[item]) + " " + item + "(s) @ {:0.2f}".format(inventory[item]) + " = ${:0.2f}".format(user_cart[item] * inventory[item]))
 
 print("\nYour total for today is: ${:0.2f}".format(total))
