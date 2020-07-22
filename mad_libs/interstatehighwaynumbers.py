@@ -1,14 +1,24 @@
 direction = {1 : "north/south", 0 : "east/west"}
 
-num = int(input())
-toPrint = "I-" + str(num) + " is "
+highway_number = int(input())
+toPrint = "I-" + str(highway_number) + " is "
 
-if(num <= 99):
+valid = True
+
+if(highway_number > 999 or highway_number <= 0):
+    valid = False
+
+if(highway_number <= 99):
     toPrint += "primary, going "
+
 else:
-    primary = str(int(str(num)[1:]))
+    primary = str(int(str(highway_number)[1:]))
     toPrint += "auxiliary, serving I-"+primary+", going "
 
-toPrint += direction[(num % 2)] + "."
+toPrint += direction[(highway_number % 2)] + "."
 
-print(toPrint)
+
+if(valid):
+    print(toPrint)
+else:
+    print(str(highway_number) + " is not a valid interstate highway number.")
