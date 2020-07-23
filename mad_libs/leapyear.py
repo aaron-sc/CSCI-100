@@ -10,5 +10,3 @@ elif((len(str(input_year)) == 4) and (str(input_year)[2:] == "00" and input_year
 else:
     is_leap_year = False
 print(str(input_year) + " - leap year") if (is_leap_year) else print(str(input_year) + " - not a leap year")
-
-print(1900 % 400)
