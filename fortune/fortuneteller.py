@@ -128,4 +128,4 @@ while choosing:
 if(showing_fortune):
     print("-"*65)
     print("Your fortune is: ")
-    print(combos[user_len])
+    print(combos[user_len-3])
