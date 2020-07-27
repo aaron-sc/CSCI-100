@@ -8,6 +8,8 @@
 # The dictionary will have the each key be the possible lengths (combinations) of each word/number. 
 # The values are the possible fortunes.
 
+# Error I got: I got a dictionary KeyError. The reason was because I had forgot that the len() function returns the length of the word (inclusive). Python is a zero based index.
+
 from res import words, nums, fortunes
 import random
 
@@ -45,7 +47,7 @@ for x in range(0, 8):
 
 
 # Combined possible outcomes
-combos = {}
+combos = {} # len:fortune
 
 for word in newwords:
     wordslens.append(len(word))
@@ -126,4 +128,4 @@ while choosing:
 if(showing_fortune):
     print("-"*65)
     print("Your fortune is: ")
-    print(combos[user_len-3])
+    print(combos[user_len])
