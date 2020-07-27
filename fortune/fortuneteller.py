@@ -50,10 +50,10 @@ for x in range(0, 8):
 combos = {} # len:fortune
 
 for word in newwords:
-    wordslens.append(len(word))
+    wordslens.append((len(word)-1))
 
 for num in newnums:
-    numslens.append(len(num))
+    numslens.append((len(num)-1))
 
 # Assign a combination of the length of each word and number to a random fortune
 for word in wordslens:
@@ -74,10 +74,10 @@ while choosing:
         break
     for letter in user_word:
         print(letter)
-    user_len += len(user_word)
+    user_len += len(user_word)-1
 
     # Num 1
-    if(len(user_word) % 2 == 0):
+    if((len(user_word)) % 2 != 0):
         print(newnums)
         user_num1 = input("Enter a number (From above): ").lower()
         if(user_num1 not in newnums):
@@ -86,7 +86,7 @@ while choosing:
             break
         for letter in user_num1:
             print(letter)
-        user_len += len(user_num1)
+        user_len += (len(user_num1)-1)
     else:
         print(newnums2)
         user_num1 = input("Enter a number (From above): ").lower()
@@ -96,10 +96,10 @@ while choosing:
             break
         for letter in user_num1:
             print(letter)
-        user_len += len(user_num1)
+        user_len += (len(user_num1)-1)
 
     # num 2
-    if(len(user_num1) % 2 == 0):
+    if((len(user_num1)) % 2 != 0):
         print(newnums)
         user_num2 = input("Enter a number (From above): ").lower()
         if(user_num2 not in newnums):
@@ -108,7 +108,7 @@ while choosing:
             break
         for letter in user_num2:
             print(letter)
-        user_len += len(user_num2)
+        user_len += (len(user_num2)-1)
     else:
         print(newnums2)
         user_num2 = input("Enter a number (From above): ").lower()
@@ -118,14 +118,16 @@ while choosing:
             break
         for letter in user_num2:
             print(letter)
-        user_len += len(user_num2)
+        user_len += (len(user_num2)-1)
 
     # end the loop
     choosing = False
     showing_fortune = True
 
-# Display fortune (if everyhting was entered)
+print(combos)
+
+# Display fortune (if everything was entered)
 if(showing_fortune):
     print("-"*65)
     print("Your fortune is: ")
-    print(combos[user_len-3])
+    print(combos[user_len])
