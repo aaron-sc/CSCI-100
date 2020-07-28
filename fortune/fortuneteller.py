@@ -124,7 +124,6 @@ while choosing:
     choosing = False
     showing_fortune = True
 
-print(combos)
 
 # Display fortune (if everything was entered)
 if(showing_fortune):
