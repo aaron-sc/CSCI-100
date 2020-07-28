@@ -23,7 +23,8 @@ choosing = True
 showing_fortune = False
 
 # var to hold lengths of chosen words/nums
-user_len = 1
+previous_user_len = 0
+user_len = 0
 
 # Set these arrays for the words and nums that are randomly picked
 newwords = []
@@ -50,83 +51,70 @@ for x in range(0, 8):
 combos = {} # len:fortune
 
 for word in newwords:
-    wordslens.append((len(word)-1))
+    wordslens.append((len(word)))
 
 for num in newnums:
-    numslens.append((len(num)-1))
+    numslens.append((len(num)))
 
 
 # Assign a combination of the length of each word and number to a random fortune
 for word in wordslens:
     for i, num in enumerate(numslens):
         chosenfortune = fortunes[random.randint(0,len(fortunes)-1)]
-        combos[word+num+len(newnums2[i])] = chosenfortune
+        combos[word+num+len(newnums2[i])-1] = chosenfortune
         
         # DEBUGGING STATEMENT
         # print(str(word) + " + " + str(num) + " + " + str(len(newnums2[i])) + " = " + chosenfortune + " (" + str(word+num+len(newnums2[i])) + ")")
 
         fortunes.remove(chosenfortune)
+
+def user_choices(words_list, user_type = "word"):
+    global user_len, previous_user_len
+    print(words_list)
+    user_input = input("Enter a " + user_type + " (from above): ").lower()
+    if(user_input not in words_list):
+        print("Not a valid word!")
+        return False
+    else:
+        for letter in user_input:
+            print(letter)
+
+        previous_user_len = user_len
+        user_len += (len(user_input))
+        print(user_len)
+        return True
+    
+
 # User inputs
 while choosing:
     # Word
-    print(newwords)
-    user_word = input("Enter a word (from above): ").lower()
-    if(user_word not in newwords):
-        print("Not a valid word!")
-        choosing = False
+    choosing = user_choices(newwords, "word")
+
+    if(choosing == False):
         break
-    for letter in user_word:
-        print(letter)
-    user_len += (len(user_word)-1)
 
     # Num 1
-    if((len(user_word)) % 2 != 0):
-        print(newnums)
-        user_num1 = input("Enter a number (From above): ").lower()
-        if(user_num1 not in newnums):
-            print("Not a valid number!")
-            choosing = False
-            break
-        for letter in user_num1:
-            print(letter)
-        user_len += (len(user_num1)-1)
+    if(((user_len)) % 2 != 0):
+        choosing = user_choices(newnums, "number")
     else:
-        print(newnums2)
-        user_num1 = input("Enter a number (From above): ").lower()
-        if(user_num1 not in newnums2):
-            print("Not a valid number!")
-            choosing = False
-            break
-        for letter in user_num1:
-            print(letter)
-        user_len += (len(user_num1)-1)
-        print(user_len)
+        choosing = user_choices(newnums2, "number")
+
+    if(choosing == False):
+        break
 
     # num 2
-    if((len(user_num1)) % 2 != 0):
-        print(newnums)
-        user_num2 = input("Enter a number (From above): ").lower()
-        if(user_num2 not in newnums):
-            print("Not a valid number!")
-            choosing = False
-            break
-        for letter in user_num2:
-            print(letter)
-        user_len += (len(user_num2)-1)
+    if(((user_len-previous_user_len)) % 2 == 0):
+        choosing = user_choices(newnums, "number")
     else:
-        print(newnums2)
-        user_num2 = input("Enter a number (From above): ").lower()
-        if(user_num2 not in newnums2):
-            print("Not a valid number!")
-            choosing = False
-            break
-        for letter in user_num2:
-            print(letter)
-        user_len += (len(user_num2)-1)
-
+        choosing = user_choices(newnums2, "number")
+    
+    if(choosing == False):
+        break
     # end the loop
     choosing = False
     showing_fortune = True
+
+print(combos)
 
 # Display fortune (if everything was entered)
 if(showing_fortune):
