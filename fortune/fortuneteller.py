@@ -51,10 +51,10 @@ for x in range(0, 8):
 combos = {} # len:fortune
 
 for word in newwords:
-    wordslens.append((len(word)))
+    wordslens.append((len(word)-1))
 
 for num in newnums:
-    numslens.append((len(num)))
+    numslens.append((len(num)-1))
 
 
 # Assign a combination of the length of each word and number to a random fortune
@@ -80,7 +80,7 @@ def user_choices(words_list, user_type = "word"):
             print(letter)
 
         previous_user_len = user_len
-        user_len += (len(user_input))
+        user_len += (len(user_input)-1)
         print(user_len)
         return True
     
@@ -94,7 +94,7 @@ while choosing:
         break
 
     # Num 1
-    if(((user_len)) % 2 != 0):
+    if(((user_len+1)) % 2 != 0):
         choosing = user_choices(newnums, "number")
     else:
         choosing = user_choices(newnums2, "number")
@@ -103,7 +103,7 @@ while choosing:
         break
 
     # num 2
-    if(((user_len-previous_user_len)) % 2 == 0):
+    if(((user_len-previous_user_len)+1) % 2 == 0):
         choosing = user_choices(newnums, "number")
     else:
         choosing = user_choices(newnums2, "number")
@@ -120,4 +120,7 @@ print(combos)
 if(showing_fortune):
     print("-"*65)
     print("Your fortune is: ")
-    print(combos[user_len])
+    if(user_len in combos):
+        print(combos[user_len])
+    else:
+        print("An error occured")
