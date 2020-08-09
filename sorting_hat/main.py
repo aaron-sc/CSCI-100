@@ -44,15 +44,15 @@ for personality in personality_scores:
     # Get the question
     questions = personality_connections[personality].keys()
     # Print the nice header
-    print(generate_header(personality))
+    print("\n"+generate_header(personality))
     # Ask each question
     for question in questions:
         # Increment (or don't) based on the answer
         harry_potter_houses[personality_connections[personality][question]] += ask_question(question)
 
 # For loop that prints the final scores
-# for house in harry_potter_houses:
-#     print(house + ": " + str(harry_potter_houses[house]))
+for house in harry_potter_houses:
+    print(house + ": " + str(harry_potter_houses[house]))
 
 print("\nYou are most likely to be in the following house(s): ")
 print(find_house(harry_potter_houses))
