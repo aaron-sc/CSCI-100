@@ -11,22 +11,28 @@ def generate_header(personality):
 
 # Ask the question and increment (or not) based on the answer
 def ask_question(question):
+    # Ask the question
     answer = input("Question: Are you " + question + " (yes (y) or no (n)): ").lower()
     if(answer == "yes" or answer == "y"):
         return 1
     elif(answer == "no" or answer == "n"):
         return 0
     else:
+        # Exit the program
         print(generate_header("NOT A VALID RESPONSE"))
         sys.exit(0)
 
 # Find the largest val in the dict of scores and return it (or if there are multiple with the same score, return those as well)
 def find_house(houses_and_scores):
+    # Find the largest score
     max_score_house = max(houses_and_scores, key=houses_and_scores.get)
     winners = []
+    # find others that might have the same high score
     for houses in houses_and_scores:
         if(houses_and_scores[houses] == houses_and_scores[max_score_house]):
+            # add them to the list
             winners.append(houses)
+    # Return the array
     return winners
 
 
@@ -54,6 +60,7 @@ for personality in personality_traits:
 for house in harry_potter_houses:
     print(house + ": " + str(harry_potter_houses[house]))
 
+# Output the list (of house(s) you are most likely to be in)
 print("\nYou are most likely to be in the following house(s): ")
 print(find_house(harry_potter_houses))
 
