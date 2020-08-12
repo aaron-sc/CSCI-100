@@ -7,7 +7,7 @@ import sys
 
 # Function to generate cool header
 def generate_header(personality):
-    return "-" + ("-"*len(personality)) + "-\n|"+personality+"|\n" + "-" + ("-"*len(personality)) + "-"
+    return "-" + ("-"*len(personality)) + "-\n|"+personality+"|\n" + "-" + ("-"*len(personality)) + "-\n"
 
 # Ask the question and increment (or not) based on the answer
 def ask_question(question):
@@ -31,16 +31,16 @@ def find_house(houses_and_scores):
 
 
 # 5 Persoality Traits
-personality_scores = ["openness", "extraversion", "conscientiousness", "agreeableness", "neuroticism"]
+personality_traits = ["openness", "extraversion", "conscientiousness", "agreeableness", "neuroticism"]
 
 # Harry Potter Houses (Scores, they are balanced based on the number of different connections from each of the 5 big personality traits)
-harry_potter_houses = {"gryffindor" : 1, "hufflepuff" : 6, "ravenclaw" : 0, "slytherin" : 3}
+harry_potter_houses = {"gryffindor" : 2, "hufflepuff" : 6, "ravenclaw" : 0, "slytherin" : 3}
 
 # 5 Persoality Traits (Connections)
 personality_connections = {"openness" : {"creative" : "ravenclaw", "open to trying new things" : "ravenclaw", "someone who is focused on tackling new challenges" : "ravenclaw", "happy to talk about abstract concepts" : "ravenclaw" , "someone who often resists new ideas" : "gryffindor"}, "extraversion" : {"compulsive" : "gryffindor" , "a person who prefers isolation" : "ravenclaw", "someone who dislikes being the center of attention" : "ravenclaw"}, "conscientiousness" : {"someone who spends time preparing" : "ravenclaw","someone who has attention to detail" : "ravenclaw", "someone who likes a set schedule" : "ravenclaw" , "someone who often makes a lot of messes and isn't organized" : "slytherin", "someone who often fails to return things or put them back where they belong" : "slytherin", "someone who procrastinates often" : "gryffindor"}, "agreeableness" : {"someone who has a great deal of the interest of others" : "gryffindor", "someone who cares for others" : "gryffindor", "someone who feels empathy and concern for others" : "gryffindor" , "someone who takes little interest in others" : "slytherin", "someone who insults or belittles others":"slytherin", "someone who manipulates others" : "slytherin", "someone who doesn't care how people feel" : "slytherin"}, "neuroticism" : {"someone who experiences a lot of stress" : "hufflepuff", "anxious often" : "hufflepuff", "someone who experiences mood swings often" : "hufflepuff" , "someone who doesn't worry much" : "gryffindor"}}
 
 # For loop to ask questions for each personality and increment the score
-for personality in personality_scores:
+for personality in personality_traits:
     # Get the question
     questions = personality_connections[personality].keys()
     # Print the nice header
@@ -56,3 +56,4 @@ for house in harry_potter_houses:
 
 print("\nYou are most likely to be in the following house(s): ")
 print(find_house(harry_potter_houses))
+

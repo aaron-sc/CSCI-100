@@ -17,7 +17,7 @@ def print_file(f):
 # Function that prints the number of words:
 def print_words_in_file(f):
     contents = f.read()
-    print("This program has " + str(len(contents.split())) + " words.")
+    print("This file has " + str(len(contents.split())) + " words.")
 
 # Function that prints the longest words in file
 def print_longest_words_in_file(f):
